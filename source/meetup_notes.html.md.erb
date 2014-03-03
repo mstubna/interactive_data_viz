@@ -1,0 +1,86 @@
+---
+title: Notes from the 12 March 2014 Data Philly meetup
+---
+
+Go back to the [main page](/index.html)
+
+## Introduction
+
+- [Charles Mendard's](http://en.wikipedia.org/wiki/Charles_Joseph_Minard) flow map of Napoleon's disastrous Russian campaign of 1812. Considered by Edward Tufte to be the best infographic ever. Six variables shown:
+  - size of army
+  - `x` and `y` coordinates and direction of travel
+  - time
+  - temperature
+  
+  <image src="images/minard.png"/>
+
+- Animations:
+  - can expand the possibilities of how to present the data, but should be considered carefully:
+  - can enhance the narrative and user understanding of the data.
+  - gratuitous animations can distract the user's attention.
+  - if you *can* present all the data clearly without animations, it's probably better to do so.
+  
+- Interactive data visualizations:
+  - can be useful in presentations of data sets - allow the user an self-discovery experience
+  - useful in user interfaces of apps that present lots data - allow the user to focus on what they are interested in
+  - just plain cool & fun
+
+- Why build for the web?
+  - maximal impact
+  - cross platform
+  - rich set of tools and libraries available
+
+----
+
+## Examples
+
+### 1. Displaying multiple variables changing over time
+
+- Typically you would plot time on the `x`-axis when display time series data. But, you may want to show more than one dependent variable. In this case, you can use animations to transition between the different time states. So, using animations gives you another dimension to plot the data in.
+- For example, plot of [life expectancy versus fertility rate for the world's countries](http://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&ctype=b&strail=false&bcs=d&nselm=s&met_x=sp_dyn_le00_in&scale_x=lin&ind_x=false&met_y=sp_dyn_tfrt_in&scale_y=lin&ind_y=false&met_s=sp_pop_totl&scale_s=lin&ind_s=false&dimp_c=country:region&ifdim=country&tunit=Y&pit=36651600000&ind=false&icfg&iconSize=0.5)
+- From [Google public data sets](http://www.google.com/publicdata/directory)
+- This data set and others available to download from [the the world bank data page](http://databank.worldbank.org/data/home.aspx)
+- See [Example 1](example_1.html) for tutorial on how to create this visualization
+  <image src="images/life_expectancy.png"/>
+
+---
+
+### 2. Provide comparisons between between groupings in the data
+- Bureau of Labor Statistics American Time Use Survey collects Americans' daily activities.
+- The BLS's own presentation consists of many [static charts](http://www.bls.gov/tus/charts/home.htm)
+- [NYTimes interactive visualization of the survey data](http://www.nytimes.com/interactive/2009/07/31/business/20080801-metrics-graphic.html?_r=0)
+- An area chart is used to represent proportion of time spent on the various activities over the course of the day. 
+- This data set can be downloaded at [BLS TUS data](http://www.bls.gov/tus/data.htm)
+- See [Example 2](example_2.html) for tutorial on how to create this visualization
+  <image src="images/time_use_survey.png"/>
+
+---
+
+### 3. Enhance user's understanding of how different views of the data set are related
+- Help the user keep 'situational awareness'
+- Useful when transforming the view of the data by: sorting, rescaling, rearranging, etc.
+- Often times you sort, rescale, rearrange the data to provide a different way of looking at the data. Rather than just cutting to the new arrangement, using a transition clues the user in to the fact that it is the same exact data, just presented differently.
+
+
+----
+
+## More about learning d3.js
+
+- How to [create basic d3 transitions](http://blog.visual.ly/creating-animations-and-transitions-with-d3-js/)
+- [Interactive Data Visualization for the Web](http://chimera.labs.oreilly.com/books/1230000000345)
+    - nice introductory book published in 2013
+    - [summary slides](https://github.com/alignedleft/strata-d3-tutorial)
+- Attempt to create d3 modules for commonly used graphs <http://nvd3.org/index.html>
+- d3 gallery <http://christopheviau.com/d3list/gallery.html>
+
+
+----
+
+## Other Web-based Tools
+- [raphael.js](http://raphaeljs.com) is another javascript library for creating svg graphics with animations
+- [Tableau](http://www.tableausoftware.com/public/) provides a web-based user interface for uploading and visualizing data
+- Plotly 
+
+
+
+

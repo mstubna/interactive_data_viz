@@ -1,0 +1,56 @@
+@charset "utf-8";
+@import "fonts";
+
+body {
+  
+  background: #FFF;
+  color: #3F3F3F;
+  @include font_open_sans_regular;
+  margin: 10px;
+  
+  img {
+    padding: 20px;
+  }
+  
+  .data_viz_example {
+    margin-top: 40px;
+    margin-left: 20px;
+  }
+  
+  select {
+    position: absolute;
+    left: 600px;
+  }
+  
+  #activity_selector {
+    top: 700px;    
+  }
+  
+  #year_selector {
+    top: 750px;
+  }
+  
+   // ticks and labels
+  .axis path, .axis line { 
+    fill: none;
+    stroke: #3F3F3F;
+    shape-rendering: crispEdges;
+  }
+  
+  .label {
+    position: absolute;
+  }
+  
+  .x_label{
+    top: 645px;
+    left: 495px;
+  }
+  
+  .y_label {
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    left: -60px;
+    top: 400px;
+  }
+  
+}

@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title><%= current_page.data.title %></title>    
+    <%= stylesheet_link_tag "normalize", "all" %>
+    <%= javascript_include_tag "jquery-2.1.0", "d3", "d3.tip" %>
+    <% unless current_page.data.js.nil? %>
+      <% current_page.data.js.each do |js| %>
+        <%= javascript_include_tag js %>
+      <% end %>
+    <% end %>
+  </head>
+  
+  <body class="<%= page_classes %>">
+    <h1><%= current_page.data.title %></h1>
+    Go back to the <a href='index.html'>main page</a>
+    
+    <%= yield %>
+  </body>
+</html>
