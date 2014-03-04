@@ -20,9 +20,9 @@ module LifeExpectancy
         country_code = row[1]
         if i % 3 == 1
           country = { country_name: row[0], country_code: country_code }
-          country[:fertility_rate] = map_row_to_numbers(row, 'f')
-        elsif i % 3 == 2
           country[:life_expectancy] = map_row_to_numbers(row, 'f')
+        elsif i % 3 == 2
+          country[:fertility_rate] = map_row_to_numbers(row, 'f')
         else
           country[:population] = map_row_to_numbers(row, 'i')
           countries << country
@@ -60,5 +60,5 @@ task :create_life_expectancy_json do
   parser = LifeExpectancy::Parser.new
   data = parser.read_raw_data
   data = parser.remove_countries_with_missing_data(data)
-  write_data_to_json data, 'source/data/life_expectancy_fertility_rate_data.js'
+  write_data_to_json data, 'source/life_expectancy_fertility_rate_data.js'
 end

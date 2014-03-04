@@ -35,5 +35,5 @@ end
 
 task :create_american_time_use_survey_json do  
   data = (AmericanTimeUseSurvey::Parser.new).read_raw_data
-  write_data_to_json data, 'source/data/american_time_use_survey_data.js'
+  write_data_to_json data, 'source/american_time_use_survey_data.js'
 end
