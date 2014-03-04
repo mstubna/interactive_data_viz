@@ -75,7 +75,7 @@ class Example2
       .attr('transform', "translate(#{@margin.left},#{@margin.top})")
     
     legend = @legend_view.selectAll('.legend')
-      .data(@activity_names.reverse())
+      .data(@activity_names.slice().reverse())
       .enter().append('g')
       .attr('class', 'legend')
       .attr('transform', (d,i) -> "translate(0,#{i*20})")
