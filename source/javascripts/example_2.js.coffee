@@ -43,9 +43,11 @@ class Example2
       values: x.values.map (d,i) -> {x: i, y: d} )
     
     # draw the areas
-    @view.selectAll('path')
+    @view
+      .selectAll('path')
       .data(data)
-      .enter().append('path')
+      .enter()
+      .append('path')
       .attr('d', (d) => @area(d.values))
       .style('fill', (d) => @color_scale(d.name))
     
