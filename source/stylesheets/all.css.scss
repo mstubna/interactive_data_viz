@@ -2,34 +2,23 @@
 @import "fonts";
 
 body {
-  
   background: #FFF;
   color: #3F3F3F;
   @include font_open_sans_regular;
-  margin: 10px;
+  padding: 10px;
+  max-width: 1024px;
+  margin: auto;
   
   img {
     padding: 20px;
   }
   
   .data_viz_example {
+    position: absolute;
     margin-top: 40px;
     margin-left: 20px;
   }
-  
-  select {
-    position: absolute;
-    left: 600px;
-  }
-  
-  #activity_selector {
-    top: 700px;    
-  }
-  
-  #year_selector {
-    top: 750px;
-  }
-  
+    
    // ticks and labels
   .axis path, .axis line { 
     fill: none;
@@ -42,8 +31,8 @@ body {
   }
   
   .x_label{
-    top: 645px;
-    left: 495px;
+    top: 500px;
+    left: 470px;
   }
   
   .y_label {
@@ -51,8 +40,36 @@ body {
     transform-origin: 0;
     -webkit-transform: translateX(0px) rotate(-90deg);
     transform: translateX(0px) rotate(-90deg);
-    top: 475px;
-    left: 30px;
+    top: 340px;
+    left: 0px;
+  }
+  
+  // Example 1
+  &.example_1 {
+    circle {
+      fill: none;
+      stroke: #202555;
+    }
+    
+    #slider {
+      width: 400px;
+    }    
+  }
+  
+  // Example 2
+  &.example_2 {
+    select {
+      position: absolute;
+      left: 600px;
+    }
+
+    #activity_selector {
+      top: 530px;    
+    }
+
+    #year_selector {
+      top: 580px;
+    } 
   }
   
   // Example 3
@@ -61,7 +78,9 @@ body {
       position: relative;
       top: 50px;
       left: 50px;
+      width: 300px;
       button {
+        width: 200px;
         margin: 5px;
       }
     }
