@@ -60,5 +60,5 @@ task :create_life_expectancy_json do
   parser = LifeExpectancy::Parser.new
   data = parser.read_raw_data
   data = parser.remove_countries_with_missing_data(data)
-  write_data_to_json data, 'source/life_expectancy_fertility_rate_data.js'
+  write_data_to_json data, 'source/javascripts/life_expectancy_fertility_rate_data.js'
 end
