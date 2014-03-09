@@ -8,6 +8,15 @@ body {
   padding: 10px;
   max-width: 1024px;
   margin: auto;
+  line-height: 1.7em;
+  
+  p, ul, li, h1, h2, h3, h4, h5 {
+    max-width: 600px;
+  }
+  
+  li:last-child {
+    margin-bottom: 15px;
+  }
   
   img {
     padding: 20px;
@@ -47,13 +56,24 @@ body {
   // Example 1
   &.example_1 {
     circle {
-      fill: none;
+      fill-opacity: 0;  
       stroke: #202555;
+      stroke-width: 2px;
     }
     
     #slider {
+      position: relative;
+      top: 50px;
       width: 400px;
-    }    
+    }
+    
+    #note {
+      position: relative;
+      top: 30px;
+    }
+    
+    .x_label { left: 400px; }
+    .y_label { top: 300px;}
   }
   
   // Example 2
@@ -100,15 +120,15 @@ body {
         fill: orange;
         fill-opacity: 1;
       }      
-    }
-    
-    .d3-tip {
-      font-size: 0.8em;
-      font-weight: bold;
-      padding: 5px;
-      background: rgba(0, 0, 0, 0.8);
-      color: #fff;
     }    
+  }
+  
+  .d3-tip {
+    font-size: 0.8em;
+    font-weight: bold;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
   }
   
 }
