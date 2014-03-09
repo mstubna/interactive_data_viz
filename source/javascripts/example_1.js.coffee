@@ -1,5 +1,5 @@
 $ ->
-  window.Example1 = new Example1
+  new Example1
 
 class Example1 
   
