@@ -19,28 +19,23 @@ Then run
 
 Point browser to <http://localhost:4569/index.html> for local testing.
 
-### Build for Deployment
+### Build the assets
 
     rake build
 
-This compiles the assets to the `build` folder.
+This compiles the `.html`, `.css`, and `.js` assets and copies them to the `build` folder.
 
-## Data Used
+## Data
 
-The rake tasks in the `data` folder convert the raw data files into `.json`
+American time use survey data downloaded from [BLS TUS data](http://www.bls.gov/tus/tables/a3_0711.htm) page
 
-### American time use survey data
-- From [BLS TUS data](http://www.bls.gov/tus/tables/a3_0711.htm) page
-- The first set of entries are for 12AM through 11AM
-- The second set of entries are for 12PM through 11PM
+Life expectancy fertility rate data downloaded from [World Bank data download site](http://databank.worldbank.org/Data/Views/VariableSelection/SelectVariables.aspx?source=Health%20Nutrition%20and%20Population%20Statistics#)
 
-### Life expectancy fertility rate data 
-- Downloaded from [World Bank data download site](http://databank.worldbank.org/Data/Views/VariableSelection/SelectVariables.aspx?source=Health%20Nutrition%20and%20Population%20Statistics#)
+Rake tasks are used to convert the raw data in the `data` folder into `.json` data files:
+    
+    rake create_american_time_use_survey_json
+    rake create_life_expectancy_json
 
-### Last example??
-- ...
+## Questions?
 
-
-## Questions
-
-Please contact Mike Stubna with questions: `mike@stubna.com`
+Please contact Mike Stubna: `mike@stubna.com`
