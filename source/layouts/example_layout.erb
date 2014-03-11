@@ -19,7 +19,8 @@
   
   <body class="<%= page_classes %>">
     <h1><%= current_page.data.title %></h1>
-    Go back to the <a href='index.html'>main page</a>
+    <a href="index.html">Go back to the main page</a></br>
+    <a href="meetup_notes.html#<%= current_page.data.meetup_note_link %>">More information about this visualization.</a>
     
     <%= yield %>
   </body>
