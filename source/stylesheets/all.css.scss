@@ -1,15 +1,26 @@
 @charset "utf-8";
 @import "fonts";
 
+.remark-container {
+  background-color: #808080;
+}
+
 body {
   background: #FFF;
-  color: #3F3F3F;
+  color: #4A4A4A;
   @include font_open_sans_regular;
   padding: 10px;
   max-width: 1024px;
   margin: auto;
   line-height: 1.7em;
   
+  a:link, a:active, a:hover, a:visited {
+    text-decoration: none;
+    color: #00005D;
+    @include font_open_sans_bold;
+  }  
+
+  // formatting for notes, examples
   p, ul, li, h1, h2, h3, h4, h5 {
     max-width: 600px;
   }
@@ -19,38 +30,49 @@ body {
   }
   
   img {
-    padding: 20px;
+    padding: 30px;
+    max-height: 100%;
+    max-width: 100%;
   }
-  
+    
   .data_viz_example {
     position: absolute;
     margin-top: 40px;
     margin-left: 20px;
-  }
     
-   // ticks and labels
-  .axis path, .axis line { 
-    fill: none;
-    stroke: #3F3F3F;
-    shape-rendering: crispEdges;
+    // ticks and labels
+    .axis path, .axis line { 
+      fill: none;
+      stroke: #3F3F3F;
+      shape-rendering: crispEdges;
+    }
+
+    .label {
+      position: absolute;
+    }
+
+    .x_label{
+      top: 500px;
+      left: 470px;
+    }
+
+    .y_label {
+      -webkit-transform-origin: 0;
+      transform-origin: 0;
+      -webkit-transform: translateX(0px) rotate(-90deg);
+      transform: translateX(0px) rotate(-90deg);
+      top: 340px;
+      left: 0px;
+    }    
   }
   
-  .label {
-    position: absolute;
-  }
-  
-  .x_label{
-    top: 500px;
-    left: 470px;
-  }
-  
-  .y_label {
-    -webkit-transform-origin: 0;
-    transform-origin: 0;
-    -webkit-transform: translateX(0px) rotate(-90deg);
-    transform: translateX(0px) rotate(-90deg);
-    top: 340px;
-    left: 0px;
+  .d3-tip {
+    margin: auto;
+    font-size: 0.8em;
+    font-weight: bold;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
   }
   
   // Example 1
@@ -77,6 +99,7 @@ body {
     
     .x_label { left: 400px; }
     .y_label { top: 300px;}
+    
   }
   
   // Example 2
@@ -132,14 +155,6 @@ body {
         fill-opacity: 1;
       }      
     }    
-  }
-  
-  .d3-tip {
-    font-size: 0.8em;
-    font-weight: bold;
-    padding: 5px;
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
   }
   
 }

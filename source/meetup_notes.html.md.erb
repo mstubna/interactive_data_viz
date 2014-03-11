@@ -1,86 +1,622 @@
 ---
-title: Notes from the 12 March 2014 Data Philly meetup
+title: Interactive Data Visualizations
 ---
 
-Go back to the [main page](/index.html)
+### examples and creating your own
 
-## Introduction
+Mike Stubna, PhD  
+12 March 2014  
 
-- [Charles Mendard's](http://en.wikipedia.org/wiki/Charles_Joseph_Minard) flow map of Napoleon's disastrous Russian campaign of 1812. Considered by Edward Tufte to be the best infographic ever. Six variables shown:
+[Notes from the Data Philly meetup](http://www.meetup.com/DataPhilly/events/168747852/)  
+[Go back to the main page](index.html)  
+
+---
+
+<a href="https://www.google.com/search?q=data+visualizations&num=50"><image src="images/visualizations.png"/></a>
+
+### Data Visualizations
+- The words 'data visualization' cover a huge variety of different things, targeting different audiences and serving different purposes.
+- Things to consider: audience, deployment, story
+
+---
+
+### Considerations
+
+Jonathan Corum, who designs visualizations for the NY Times, says to know your audience and [design for them](http://style.org/tapestry/)
+
+potential design ranges:
+
+- oversimplification --- overwhelming detail
+- explanation --- decoration
+- storytelling --- interactivity
+
+---
+
+<a href="http://www.nytimes.com/interactive/2013/10/02/us/uninsured-americans-map.html"><image src="images/ny_times_2.png"/></a>
+
+From the NY Times: [Where poor and uninsured Americans live](http://www.nytimes.com/interactive/2013/10/02/us/uninsured-americans-map.html)
+
+- interactivity allows user to focus on regions of interest to them
+
+<a href="http://www.nytimes.com/interactive/2012/11/02/us/politics/paths-to-the-white-house.html"><image src="images/decision_tree.png"/></a>
+
+From the NY Times: [512 paths to the White House](http://www.nytimes.com/interactive/2012/11/02/us/politics/paths-to-the-white-house.html)
+
+- easy to use interactivity that allows the user to explore a decision tree without even knowing what one is
+
+---
+
+<a href="http://www.nytimes.com/interactive/science/space/keplers-tally-of-planets.html"><image src="images/ny_times_1.png"/></a>
+
+From the NY Times: [Keplers tally of planets](http://www.nytimes.com/interactive/science/space/keplers-tally-of-planets.html)
+
+<a href="http://style.org/visualized/"><image src="images/jonathan_corum.png"/></a>
+
+From <http://style.org/visualized/>
+
+### Jonathan Corum [says about his development thought process](http://style.org/visualized/):
+- he wanted to avoid just "counting"
+- he wanted to avoid elaborate encodings - don't create a language that readers have to decipher
+- a goal was to make it intuitive even without looking at the key
+- visualizations don't equal explanations
+
+When he reran his script, he discovered new things about the data set, because of the visualization
+
+---
+
+### Common themes from these interactive data visualizations
+- Allows the user to explore and focus on what they are interested in
+- Allows the user to make discoveries that are meaningful to them
+- The semblance of comprehensiveness can be appealing, but so can simplicity
+
+### Where they could be used
+- Presentations of complex data sets
+- Interfaces of apps that enable users to make data-driven decisions
+
+---
+
+### Animation
+
+how much is ...
+
+<a href="http://www.facebook.com/paper"><image src="images/paper.png"/></a>
+
+too much?
+
+<a href="http://www.imore.com/ios-7-and-motion-sickness-poll"><image src="images/reduce_motion.jpg"/></a>
+
+### Is interactivity always helpful?
+- [Facebook paper](http://www.facebook.com/paper) is a recent example of UX design that makes use of [delightful animations](http://techcrunch.com/2014/02/04/hands-on-with-facebook-paper/)
+- Apple's introduction of motion and animation in their iOS7 redesign has been [causing motion sickness for some people](http://www.imore.com/ios-7-and-motion-sickness-poll)
+- Interactivity can expand the possibilities of how to present the data, but should be considered carefully.
+- It can enhance the narrative and user understanding of the data, but gratuitous animations can be distracting.
+
+---
+
+<a href="http://en.wikipedia.org/wiki/Charles_Joseph_Minard"><image src="images/minard.png"/></a>
+
+[Charles Minard's map of Napoleon's Russian campaign of 1812](http://en.wikipedia.org/wiki/Charles_Joseph_Minard)
+
+### Are animations necessary?
+- If you *can* present all the data clearly without animations, it's probably better to do so. See, for example: [Charles Mendard's](http://en.wikipedia.org/wiki/Charles_Joseph_Minard) flow map of Napoleon's disastrous Russian campaign of 1812. Considered by Edward Tufte to be the best infographic ever. Six variables shown:
   - size of army
   - `x` and `y` coordinates and direction of travel
   - time
   - temperature
-  
-  <image src="images/minard.png"/>
+    
+---
 
-- Animations:
-  - can expand the possibilities of how to present the data, but should be considered carefully:
-  - can enhance the narrative and user understanding of the data.
-  - gratuitous animations can distract the user's attention.
-  - if you *can* present all the data clearly without animations, it's probably better to do so.
-  
-- Interactive data visualizations:
-  - can be useful in presentations of data sets - allow the user an self-discovery experience
-  - useful in user interfaces of apps that present lots data - allow the user to focus on what they are interested in
-  - just plain cool & fun
+### Workflow
 
-- Why build for the web?
-  - maximal impact
-  - cross platform
-  - rich set of tools and libraries available
+As data scientists, we are very comfortable using Python, MATLAB, R, etc., for
 
-----
+- rapid iteration of analysis, exploration, model fitting, static graphs
+- developing scripts to load/scrub/export data
 
-## Examples
+It would be ideal to have a similarly flexible framework for rapidly iterating on developing data visualizations
 
-### 1. Displaying multiple variables changing over time
+- easily map cleaned data into engaging graphics
+- quickly change style, presentation, structure of visualizations
+- automate the workflow as much as possible, from raw data to final visualization
 
+---
+
+### Why build visualizations for the web?
+
+- Maximal impact - can provide an easily accessible cross platform experience
+- Rich set of tools and libraries available, many open-source, continually evolving
+- Large collaborative community built around web technology and design
+
+---
+
+### Basic graphical elements: SVG
+
+- [Basic SVG elements for drawing](https://developer.mozilla.org/en-US/docs/Web/SVG/Element): rect, ellipse, circle, line, text, polygon.
+- [SVG shape properties](http://www.w3.org/TR/SVG11/shapes.html) can be set through html or javascript
+
+<svg width="300" height="200">
+  <rect x="50" y="50" width="200" height="100" fill="navy" stroke="orange" stroke-width="10"/>
+</svg>
+
+        <svg width="300" height="200">
+          <rect x="50" y="50" width="200" height="100" fill="navy" stroke="orange" stroke-width="10"/>
+        </svg>
+
+<svg width="300" height="200">
+  <g transform="translate(100,50) rotate(30) scale(0.5)">
+    <rect x="50" y="50" width="200" height="100" fill="navy" stroke="orange" stroke-width="10"/>
+  </g>
+</svg>
+
+        <svg width="300" height="200">
+          <g transform="translate(100,50) rotate(30) scale(0.5)">
+            <rect x="50" y="50" width="200" height="100" fill="navy" stroke="orange" stroke-width="10"/>
+          </g>
+        </svg>
+        
+<svg width="300" height="200">
+  <ellipse cx="150" cy="100" rx="60" ry="30" fill="orange" stroke="navy" stroke-width="5"  />
+</svg>
+
+        <svg width="300" height="200">
+          <ellipse cx="150" cy="100" rx="60" ry="30" fill="orange" stroke="navy" stroke-width="5"  />
+        </svg>
+
+### How to build visualizations for the web
+
+- The basic concept is to map properties of your data set into the properties of svg objects on the screen.
+
+---
+
+### Basic components of a web document
+- `html`, provides the structure of the document.
+- `css`, how styles are applied.
+- `javascript` typically provides the interactivity, but is also used to modify the structure and the styling.
+
+---
+
+### Higher level languages
+
+<image src="images/coffee.png"/>
+
+#### [Coffeescript](http://coffeescript.org/)
+
+compiles to javascript but has
+- saner class structure
+- cleaner syntax
+- shortcuts for common structures
+
+#### [SCSS](http://sass-lang.com/)
+
+compiles to css but permits
+- classes
+- functions, variables, calculations
+
+---
+
+### Data
+- [JSON](http://json.org) (javascript object notation) is a way of representing data in a text format that can be read by all web browsers.
+- `json` is made up of `strings`, `numbers`, `booleans` and two basic structures: `arrays` and `objects` aka hashes, dictionaries, etc.
+
+        # array
+        [ 1, 2, 3, "a", "b", "c", ["another", "array"] ]
+        
+        # object
+        { "key": "value", "a": 1, "b": false }
+        
+- Many languages have libraries to handle converting to/from `json` easily.
+- For data visualizations typically, make an array of objects with properties to be represented graphically.
+
+        [
+           {
+             "country_name": "Afghanistan", 
+             "life_expectancy": Array[52],
+             "fertility_rate": Array[52],
+             "population": Array[52]
+           },
+           { 
+             "country_name": "Albania",
+             "country_code": "ALB",
+             "life_expectancy": Array[52],
+             "fertility_rate": Array[52],
+             "population": Array[52] 
+           }
+        ]
+
+---
+
+<a href="http://d3js.org"><image src="images/d3.png"/></a>
+
+### What is D3?
+- D3 is an open-source javascript library for creating data visualizations for the web.
+- At it's core, D3 provides a "user-friendly" interface for binding properties of SVG elements to data properties. For example, with one function call you can draw a circle for each country, the area of which is proportional to the country's population size.
+- In addition to basic SVG shapes, D3 provides interfaces for [more complex elements](https://github.com/mbostock/d3/wiki/SVG-Shapes), such as areas, arcs, symbols.
+- D3 provides functions for generating common graph components: scales, axes, transitions, delays, user events.
+- D3 provides helper functions for doing common tasks, such as calculating the positions of elements in a stacked bar chart, or mapping geographical data onto different projections.
+
+---
+
+### Advantages of D3
+
+- maximally flexible
+- extension over configuration
+- large open-source community
+- large libraries of examples and tutorials
+
+### Disadvantages
+
+- maximally flexible - it can be more difficult to use than some simplified high-level chart libraries
+- programming in javascript can be painful, but coffeescript helps to eliminate much of the pain
+
+---
+
+<a id="example_1"></a>
+
+<a href="http://www.google.com/publicdata/directory"><image src="images/life_expectancy.png"/></a>
+
+From Google: [Google public data explorer](http://www.google.com/publicdata/directory)
+
+### Ex 1: interactivity as another dimension
 - Typically you would plot time on the `x`-axis when display time series data. But, you may want to show more than one dependent variable. In this case, you can use animations to transition between the different time states. So, using animations gives you another dimension to plot the data in.
 - For example, plot of [life expectancy versus fertility rate for the world's countries](http://www.google.com/publicdata/explore?ds=d5bncppjof8f9_&ctype=b&strail=false&bcs=d&nselm=s&met_x=sp_dyn_le00_in&scale_x=lin&ind_x=false&met_y=sp_dyn_tfrt_in&scale_y=lin&ind_y=false&met_s=sp_pop_totl&scale_s=lin&ind_s=false&dimp_c=country:region&ifdim=country&tunit=Y&pit=36651600000&ind=false&icfg&iconSize=0.5)
 - From [Google public data sets](http://www.google.com/publicdata/directory)
 - This data set and others available to download from [the the world bank data page](http://databank.worldbank.org/data/home.aspx)
-- See [Example 1](example_1.html) for tutorial on how to create this visualization
-  <image src="images/life_expectancy.png"/>
+- See [Example 1](example_1.html) for a demo of this visualization
+
+<a href="example_1.html"><image src="images/example_1.png"/></a>
+
+### Ex 1: code
+
+#### `html`
+
+        <html>
+          <head>
+            <link href="/stylesheets/all.css" media="screen" rel="stylesheet" type="text/css">
+            <script src="/javascripts/jquery-2.1.0.js" type="text/javascript"></script>
+            <script src="/javascripts/d3.js" type="text/javascript"></script>
+            <script src="/javascripts/d3.tip.js" type="text/javascript"></script>
+            <script src="/javascripts/life_expectancy_fertility_rate_data.js" type="text/javascript"></script>
+            <script src="/javascripts/example_1.js" type="text/javascript"></script>
+          </head>
+          <body class="example_1">
+            <div id="example" class="data_viz_example"></div>
+          </body>
+        </html>
+
+#### `coffeescript`
+
+        constructor: ->
+          @margin = {top: 20, right: 20, bottom: 30, left: 50}
+          @width = 960 - @margin.left - @margin.right
+          @height = 500 - @margin.top - @margin.bottom
+  
+          # the data
+          @countries = window.data.countries
+          @years = window.data.years
+
+          @add_graph()
+          @define_scales()
+          @add_year_slider()
+          @add_axes()
+          @add_tooltips()
+  
+          # initialize graph
+          slider = $('#slider')
+          slider.val('1960')
+          slider.change()
+
+        add_graph: ->
+          # create the view
+          @view = d3.select('#example').append('svg')
+            .attr('width', @width + @margin.left + @margin.right)
+            .attr('height', @height + @margin.top + @margin.bottom)
+            .append('g')
+            .attr('transform', "translate(#{@margin.left},#{@margin.top})")
+  
+          # add the circles
+          @circles = @view
+            .selectAll('circle')
+            .data(@countries)
+            .enter()
+            .append('circle')
+            .attr('class', 'circle')
+  
+        define_scales: ->
+          @x_scale = d3.scale.linear().domain([10, 90]).range([0, @width])
+          @y_scale = d3.scale.linear().domain([0.5, 10]).range([@height, 0])
+          # scale r so that area is proportional to population
+          @r_scale = d3.scale.linear().domain(@get_population_min_max().map (x) -> Math.sqrt(x)).range([1, 50])    
+
+        # calculates the min/max population for the data set
+        get_population_min_max: ->
+          all_data = @countries.reduce (prev, curr) ->
+            prev.concat curr.population
+          , []
+          d3.extent(all_data)
+
+        # html5 range inputs are supported by most browsers: http://caniuse.com/#feat=input-range
+        add_year_slider: ->
+          slider = $("<input id='slider' type='range' min='1960' max='2011'/>")
+          curr_val = $("<span id='currentValue'></span>")
+          $('#example').append [slider, $("<p id='note'>Year: </p>").append(curr_val)]
+
+          slider.on 'change', =>
+            val = slider.val()
+            curr_val.html val
+            @view_year @years.indexOf(Number(val))
+
+        # transition the circles to the data at the given year
+        view_year: (i) ->
+          @circles
+            .attr('cx', (d) => @x_scale(d.life_expectancy[i]))
+            .attr('cy', (d) => @y_scale(d.fertility_rate[i]))
+            .attr('r', (d) => @r_scale(Math.sqrt(d.population[i])))
+
+        add_axes: ->
+          @x_axis_view = @view.append('g')
+            .attr('class', 'axis')
+            .attr('transform', "translate(0,#{@height})")
+
+          @y_axis_view = @view.append('g')
+            .attr('class', 'axis')
+  
+          @x_axis = d3.svg.axis().scale(@x_scale).orient('bottom')
+          @x_axis_view.call(@x_axis)
+
+          @y_axis = d3.svg.axis().scale(@y_scale).orient('left')
+          @y_axis_view.call(@y_axis)
+    
+          # axes labels
+          $('#example').append [
+            $("<div class='x_label label'>Life Expectancy (years)</div>")
+            $("<div class='y_label label'>Fertility Rate</div>") ]
+
+        # appends tooltips to the bars. Uses d3-tip.js
+        # see http://bl.ocks.org/Caged/6476579
+        add_tooltips: ->
+          tip = d3.tip()
+            .attr('class', 'd3-tip')
+            .offset([-10, 0])
+            .html((d) -> "<span>#{d.country_name}</span>")
+
+          @view.call(tip)
+
+          @circles
+            .on('mouseover', tip.show)
+            .on('mouseout', tip.hide)
+
+#### `scss`
+
+        .data_viz_example {
+          position: absolute;
+          margin-top: 40px;
+          margin-left: 20px;
+  
+          // ticks and labels
+          .axis path, .axis line { 
+            fill: none;
+            stroke: #3F3F3F;
+            shape-rendering: crispEdges;
+          }
+
+          .label {
+            position: absolute;
+          }
+
+          .x_label{
+            top: 500px;
+            left: 470px;
+          }
+
+          .y_label {
+            -webkit-transform-origin: 0;
+            transform-origin: 0;
+            -webkit-transform: translateX(0px) rotate(-90deg);
+            transform: translateX(0px) rotate(-90deg);
+            top: 340px;
+            left: 0px;
+          }    
+        }
+
+        .d3-tip {
+          margin: auto;
+          font-size: 0.8em;
+          font-weight: bold;
+          padding: 5px;
+          background: rgba(0, 0, 0, 0.8);
+          color: #fff;
+        }
+
+        // Example 1
+        &.example_1 {
+          position: relative;
+          width: 100%;
+  
+          circle {
+            fill-opacity: 0;  
+            stroke: #202555;
+            stroke-width: 2px;
+          }
+  
+          #slider {
+            position: relative;
+            top: 50px;
+            width: 400px;
+          }
+  
+          #note {
+            position: relative;
+            top: 30px;
+          }
+  
+          .x_label { left: 400px; }
+          .y_label { top: 300px;}
+  
+        }
 
 ---
 
-### 2. Provide comparisons between between groupings in the data
+<a id="example_2"></a>
+
+### Ex 2: animations can highlight comparisons
+
+<a href="http://www.nytimes.com/interactive/2009/07/31/business/20080801-metrics-graphic.html?_r=0"><image src="images/time_use_survey.png"/></a>
+
+From NY Times: [American time use survey](http://www.nytimes.com/interactive/2009/07/31/business/20080801-metrics-graphic.html?_r=0)
+
+### Provide comparisons between between groupings in the data
 - Bureau of Labor Statistics American Time Use Survey collects Americans' daily activities.
 - The BLS's own presentation consists of many [static charts](http://www.bls.gov/tus/charts/home.htm)
 - [NYTimes interactive visualization of the survey data](http://www.nytimes.com/interactive/2009/07/31/business/20080801-metrics-graphic.html?_r=0)
 - An area chart is used to represent proportion of time spent on the various activities over the course of the day. 
 - This data set can be downloaded at [BLS TUS data](http://www.bls.gov/tus/data.htm)
-- See [Example 2](example_2.html) for tutorial on how to create this visualization
-  <image src="images/time_use_survey.png"/>
+- See [Example 2](example_2.html) for a demo of this visualization
+
+<a href="example_2.html"><image src="images/example_2.png"/></a>
+
+### Ex 2: code
+
+#### `coffeescript` (excerpt)
+
+        constructor: ->
+          @data = window.data
+          @activity_names = @data[0].map (x) -> x.name
+
+          @margin = {top: 20, right: 20, bottom: 30, left: 50}
+          @width = 960 - @margin.left - @margin.right
+          @height = 500 - @margin.top - @margin.bottom
+  
+          @create_graph()
+          @add_axes()
+          @add_legend()
+          @add_activity_selector()
+          @add_year_selector()
+
+        # area
+        @area = d3.svg.area()
+          .x( (d) => @x_scale(d.x) )
+          .y0( (d) => @y_scale(d.y0) )
+          .y1( (d) => @y_scale(d.y0 + d.y) )
+
+        # use stack function to map the data into form needed for stacked graph
+        @stack = d3.layout.stack().values( (d) -> d.values)
+        data = @stack(@data[0].map (x) ->
+          name: x.name
+          values: x.values.map (d,i) -> {x: i, y: d} )
+
+        # draw the areas
+        @view
+          .selectAll('path')
+          .data(data)
+          .enter()
+          .append('path')
+          .attr('d', (d) => @area(d.values))
+          .style('fill', (d) => @color_scale(d.name))
+
+        transition: ->
+          data = @data[@year_select.prop('selectedIndex')]
+          index = @activity_select.prop('selectedIndex')
+
+          data = @stack(data.map (x,i) ->
+            name: x.name
+            values: x.values.map (d,j) ->
+              x: j
+              y: if index is 0 or index-1 is i then d else 0 )
+
+          d3.selectAll('path')
+            .data(data)
+            .transition()
+            .duration(1000)
+            .attr('d', (d) => @area(d.values))
 
 ---
 
-### 3. Enhance user's understanding of how different views of the data set are related
+<a id="example_3"></a>
+
+<a href="example_3.html"><image src="images/example_3.png"/></a>
+
+### Ex 3. Enhance user's understanding of how different views of the data set are related
 - Help the user keep 'situational awareness'
 - Useful when transforming the view of the data by: sorting, rescaling, rearranging, etc.
 - Often times you sort, rescale, rearrange the data to provide a different way of looking at the data. Rather than just cutting to the new arrangement, using a transition clues the user in to the fact that it is the same exact data, just presented differently.
+- See [Example 3](example_3.html) for tutorial on how to create this visualization
 
+Each graph binds the data to visual properties in slightly different ways. D3 takes care of animating the graphs between states.
 
-----
+#### `coffeescript` (excerpt)
 
-## More about learning d3.js
+        # displays the data in a scatterplot
+        show_scatterplot: ->
+          bar_width = 20
+          x_domain = [44, 85]
+          x_label = 'Life Expectancy'
+          y_domain = [0, 200]
+          y_label = 'Countries'
 
+          @update_scales x_domain, y_domain
+
+          @bars
+            .transition()
+            .duration(1000)
+            .delay((d,i) -> 10*i)
+            .attr('width', bar_width)
+            .attr('x', (d) => @x_scale(d.life_expectancy)-bar_width/2)
+            .attr('y', (d,i) => @y_scale(i) - 20)
+            .attr('height', @height - @y_scale(9))
+            .attr('stroke-width', 1)
+            .attr('rx', 10)
+            .attr('ry', 10)
+
+          @update_axes x_label, false, y_label, true
+
+---
+
+<a href="http://www.garysieling.com/blog/rending-scikit-decision-trees-d3-js"><image src="images/decision_trees.png"/></a>
+  
+From [interactive visualizations of decision trees](http://www.garysieling.com/blog/rending-scikit-decision-trees-d3-js)
+
+### Ex 4: visual model exploration
+- Better understanding ML algorithm results
+- Often times ML techniques produce models that are easy to measure the fitness of but more difficult to understand the dynamics of.
+- Interactive data visualizations can help you spot problems in the models that might otherwise be difficult to detect.
+- For example, see [interactive visualizations of decision trees using d3.js](http://www.garysieling.com/blog/rending-scikit-decision-trees-d3-js)
+
+---
+
+### Challenges with touch devices
+
+- More devices are primarily touch input, and having intuitive touch actions [can be more impactful than just treating touch input like mouse input](http://research.microsoft.com/apps/pubs/?id=189011). Some extra work is typically required to make visualizations touch intuitive. For example, tooltips aren't appropriate.
+- Size of elements - elements intended to be touched should be large enough to do so.
+- Aspect ratio: handling portrait v/s landscape, and the many potential sizes of Android devices.
+- Currently, `svg` transforms can't take advantage of hardware acceleration on iOS devices ([see more here](http://www.sencha.com/blog/the-html5-scorecard-the-good-the-bad-and-the-ugly-in-ios7/)) , which means that transformations often aren't as smooth on iOS tablets/phones as on desktop/laptops.
+- [WebGL](http://en.wikipedia.org/wiki/WebGL) could move to iOS tablets at some point in the near future, enabling much more powerful rendering capabilities. See [three.js](http://threejs.org/) for examples of WebGL.
+
+---
+
+### Resources for learning d3.js
+
+- [Dashing D3.js tutorial](https://www.dashingd3js.com/table-of-contents)
 - How to [create basic d3 transitions](http://blog.visual.ly/creating-animations-and-transitions-with-d3-js/)
-- [Interactive Data Visualization for the Web](http://chimera.labs.oreilly.com/books/1230000000345)
-    - nice introductory book published in 2013
-    - [summary slides](https://github.com/alignedleft/strata-d3-tutorial)
-- Attempt to create d3 modules for commonly used graphs <http://nvd3.org/index.html>
-- d3 gallery <http://christopheviau.com/d3list/gallery.html>
+- [Interactive Data Visualization for the Web](http://chimera.labs.oreilly.com/books/1230000000345) is a nice introductory book published in 2013.
+- The book's [summary slides](https://github.com/alignedleft/strata-d3-tutorial)
+- [d3 gallery](http://christopheviau.com/d3list/gallery.html)
 
+---
 
-----
+### Other Web-based Tools
 
-## Other Web-based Tools
-- [raphael.js](http://raphaeljs.com) is another javascript library for creating svg graphics with animations
-- [Tableau](http://www.tableausoftware.com/public/) provides a web-based user interface for uploading and visualizing data
-- Plotly 
+- [raphael.js](http://raphaeljs.com) is another javascript library for creating svg graphics with animations.
+- [Tableau](http://www.tableausoftware.com/public/) provides a web-based user interface for uploading and visualizing data.
+- [Plotly](https://plot.ly/) lets you import and do some analysis and basic visualization on your data.
+- [RCharts](http://rcharts.io/) is an open-source library for creating javascript data visualizations from R.
 
+---
 
+### Other data visualization resources
+
+- [Visualized 2014 conference videos](http://visualized.com/2014/videos)
+- [OpenVis 2013 Conference videos](http://www.youtube.com/playlist?list=PLlgxAbM67lYIQ5jid9cXsm72wEpHhAnyb) are a great source of recent trends and thoughts in the area
+  - [Juan Velasco's (National Geographic) keynote](http://www.youtube.com/watch?v=rKcfKePbVl4&feature=share&list=PLlgxAbM67lYIQ5jid9cXsm72wEpHhAnyb)
+  - [Amanda Cox's (NYTimes) keynote](http://www.youtube.com/watch?v=ha9LA3rYD9g)
 
 
