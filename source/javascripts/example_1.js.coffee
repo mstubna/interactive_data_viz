@@ -12,7 +12,8 @@ class Example1
     @countries = window.data.countries
     @years = window.data.years
 
-    @add_graph()    
+    @add_graph()
+    @define_scales()
     @add_year_slider()
     @add_axes()
     @add_tooltips()
@@ -30,19 +31,19 @@ class Example1
       .append('g')
       .attr('transform', "translate(#{@margin.left},#{@margin.top})")
     
-    # add the bubbles
+    # add the circles
     @circles = @view
       .selectAll('circle')
       .data(@countries)
       .enter()
       .append('circle')
-      .attr('class', '.circle')
+      .attr('class', 'circle')
     
-    # define the scales
+  define_scales: ->
     @x_scale = d3.scale.linear().domain([10, 90]).range([0, @width])
     @y_scale = d3.scale.linear().domain([0.5, 10]).range([@height, 0])
     # scale r so that area is proportional to population
-    @r_scale = d3.scale.linear().domain(@get_population_min_max().map (x) -> Math.sqrt(x)).range([1, 50])
+    @r_scale = d3.scale.linear().domain(@get_population_min_max().map (x) -> Math.sqrt(x)).range([1, 50])    
   
   # calculates the min/max population for the data set
   get_population_min_max: ->

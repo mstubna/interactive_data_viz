@@ -114,8 +114,14 @@ class Example2
     
     data = @stack(data.map (x,i) ->
       name: x.name
-      values: x.values.map (d,j) -> {x: j, y: if index is 0 or index-1 is i then d else 0} )
-    d3.selectAll('path').data(data).transition().duration(1000).attr('d', (d) => @area(d.values))
+      values: x.values.map (d,j) ->
+        x: j
+        y: if index is 0 or index-1 is i then d else 0 )
+    d3.selectAll('path')
+      .data(data)
+      .transition()
+      .duration(1000)
+      .attr('d', (d) => @area(d.values))
       
       
       
