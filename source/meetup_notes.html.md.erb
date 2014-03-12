@@ -17,6 +17,17 @@ Notes from the [Data Philly meetup](http://www.meetup.com/DataPhilly/events/1687
 ### Data Visualizations
 - The words 'data visualization' cover a huge variety of different things, targeting different audiences and serving different purposes.
 - Things to consider: audience, deployment, story
+- National Geographic - older, less technical audience. Often focus on narrative, artistry.
+- NY Times, data-heavy, younger more technical audience. Often focus on exploring data and meaning.
+- Scientific publications - most technical audience.
+
+<img src="images/national_geographic_1.jpg">
+
+From: National Geographic
+
+<img src="images/national_geographic_2.jpg">
+
+From: National Geographic
 
 ---
 
@@ -129,37 +140,71 @@ It would be ideal to have a similarly flexible framework for rapidly iterating o
 
 ---
 
+### Basic components of a web document
+- `html`, provides the structure of the document.
+- `css`, how styles are applied.
+- `javascript` typically provides the interactivity, but is also used to modify the structure and the styling.
+
+---
+
+<a href="http://d3js.org"><image src="images/d3.png"/></a>
+
+### What is D3?
+- D3 is an open-source javascript library for creating data visualizations for the web.
+- At it's core, D3 provides a "user-friendly" interface for binding properties of SVG elements to data properties. For example, with one function call you can draw a circle for each country, the area of which is proportional to the country's population size.
+- In addition to basic SVG shapes, D3 provides interfaces for [more complex elements](https://github.com/mbostock/d3/wiki/SVG-Shapes), such as areas, arcs, symbols.
+- D3 provides functions for generating common graph components: scales, axes, transitions, delays, user events.
+- D3 provides helper functions for doing common tasks, such as calculating the positions of elements in a stacked bar chart, or mapping geographical data onto different projections.
+
+---
+
+### Advantages of D3
+
+- maximally flexible
+- extension over configuration
+- large open-source community
+- large libraries of examples and tutorials
+
+### Disadvantages
+
+- maximally flexible - it can be more difficult to use than some simplified high-level chart libraries
+- programming in javascript can be painful, but coffeescript helps to eliminate much of the pain
+
+---
+
 ### Basic graphical elements: SVG
 
 - [Basic SVG elements for drawing](https://developer.mozilla.org/en-US/docs/Web/SVG/Element): rect, ellipse, circle, line, text, polygon.
-- [SVG shape properties](http://www.w3.org/TR/SVG11/shapes.html) can be set through html or javascript
+- [SVG shape attributes](http://www.w3.org/TR/SVG11/shapes.html) can be set through html or javascript
 
 <svg width="300" height="200">
-  <rect x="50" y="50" width="200" height="100" fill="navy" stroke="orange" stroke-width="10"/>
+  <rect x="50" y="50" width="200" height="100" fill="orange" stroke="navy" stroke-width="10"/>
 </svg>
 
         <svg width="300" height="200">
-          <rect x="50" y="50" width="200" height="100" fill="navy" stroke="orange" stroke-width="10"/>
+          <rect x="50" y="50" width="200" height="100" fill="orange" stroke="navy" stroke-width="10"/>
         </svg>
 
 <svg width="300" height="200">
   <g transform="translate(100,50) rotate(30) scale(0.5)">
-    <rect x="50" y="50" width="200" height="100" fill="navy" stroke="orange" stroke-width="10"/>
+    <rect x="50" y="50" width="100" height="100" fill="none" stroke="navy" stroke-width="10"/>
+    <rect x="200" y="50" width="100" height="100" fill="none" stroke="navy" stroke-width="10"/>
   </g>
 </svg>
 
         <svg width="300" height="200">
           <g transform="translate(100,50) rotate(30) scale(0.5)">
-            <rect x="50" y="50" width="200" height="100" fill="navy" stroke="orange" stroke-width="10"/>
+            <rect x="50" y="50" width="100" height="100" fill="none" stroke="navy" stroke-width="10"/>
+            <rect x="200" y="50" width="100" height="100" fill="none" stroke="navy" stroke-width="10"/>
           </g>
         </svg>
         
 <svg width="300" height="200">
-  <ellipse cx="150" cy="100" rx="60" ry="30" fill="orange" stroke="navy" stroke-width="5"  />
+  <ellipse cx="150" cy="100" rx="60" ry="30" fill="none" stroke="navy" stroke-width="5"  />
 </svg>
 
         <svg width="300" height="200">
-          <ellipse cx="150" cy="100" rx="60" ry="30" fill="orange" stroke="navy" stroke-width="5"  />
+          <ellipse cx="150" cy="100" rx="60" ry="30" fill="none" stroke="navy" stroke-width="5"  />
         </svg>
 
 ### How to build visualizations for the web
@@ -168,27 +213,22 @@ It would be ideal to have a similarly flexible framework for rapidly iterating o
 
 ---
 
-### Basic components of a web document
-- `html`, provides the structure of the document.
-- `css`, how styles are applied.
-- `javascript` typically provides the interactivity, but is also used to modify the structure and the styling.
-
----
-
 ### Higher level languages
 
 <image src="images/coffee.png"/>
 
-#### [Coffeescript](http://coffeescript.org/)
+#### [`Coffeescript`](http://coffeescript.org/)
 
-compiles to javascript but has
-- saner class structure
-- cleaner syntax
+compiles to `javascript` but has
+
+- saner class structure  
+- cleaner syntax  
 - shortcuts for common structures
 
-#### [SCSS](http://sass-lang.com/)
+#### [`SCSS`](http://sass-lang.com/)
 
-compiles to css but permits
+compiles to `css` but permits
+
 - classes
 - functions, variables, calculations
 
@@ -222,31 +262,6 @@ compiles to css but permits
              "population": Array[52] 
            }
         ]
-
----
-
-<a href="http://d3js.org"><image src="images/d3.png"/></a>
-
-### What is D3?
-- D3 is an open-source javascript library for creating data visualizations for the web.
-- At it's core, D3 provides a "user-friendly" interface for binding properties of SVG elements to data properties. For example, with one function call you can draw a circle for each country, the area of which is proportional to the country's population size.
-- In addition to basic SVG shapes, D3 provides interfaces for [more complex elements](https://github.com/mbostock/d3/wiki/SVG-Shapes), such as areas, arcs, symbols.
-- D3 provides functions for generating common graph components: scales, axes, transitions, delays, user events.
-- D3 provides helper functions for doing common tasks, such as calculating the positions of elements in a stacked bar chart, or mapping geographical data onto different projections.
-
----
-
-### Advantages of D3
-
-- maximally flexible
-- extension over configuration
-- large open-source community
-- large libraries of examples and tutorials
-
-### Disadvantages
-
-- maximally flexible - it can be more difficult to use than some simplified high-level chart libraries
-- programming in javascript can be painful, but coffeescript helps to eliminate much of the pain
 
 ---
 
